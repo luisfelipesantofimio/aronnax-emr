@@ -3,12 +3,8 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
-  adapter: node({
-    mode: "standalone",
-  }),
   site: "https://luisfelipesantofimio.github.io",
-  base: "aronnax-erm",
+  base: "aronnax-erm/dist/",
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],
