@@ -1,0 +1,102 @@
+---
+import InstructionItem from "./InstructionItem.astro"
+
+interface Props {
+  locale: string;
+}
+
+interface Instruction{
+  title: string;
+  body: string;
+  icon: string;
+}
+
+const {locale} = Astro.props;
+
+
+const instructionEs: Instruction[] = [
+  {
+    title: "Descomprime",
+    body: "Se descargará una carpeta comprimida donde encontrarás el ejecutable de Aronnax junto a algunas carpetas con datos necesarios.",
+    icon: "fa-regular fa-file-zipper"
+  },
+  {
+    title: "(Opcional) Mueve la carpeta a tu escritorio",
+    body: "Siempre querrás tener tu herramienta de trabajo en un lugar accesible mientras desarrollamos un instalador.",
+    icon: "fa-solid fa-folder-open"
+  },
+  {
+  title: "Crea tu perfil de usuario",
+  body: "Para poder usar el programa, deberás crear un usuario local, al que se asociarán todos los registros. Aségurate de elegir tu país, para poder seleccionar las ciudades del territorio. ¡No podrás cambiar la información registrada!",
+  icon: "fa-solid fa-user-plus",
+  },
+  {
+    title: "Respalda tus claves de recuperación",
+    body: "Tras tu registro, obtendrás un pin de un solo uso si olvidas tu contraseña. Guárdalo en un lugar seguro.",
+    icon: "fa-solid fa-key"
+  },
+  {
+    title: "Cuida tu base de datos",
+    body: "Aronnax es un programa 100% offline, por lo que cuenta con una base de datos incorporada sin ningún respaldo. Encontrarás tu base de datos en la carpea de Documentos de tu sistema.",
+    icon: "fa-solid fa-database"
+  }
+];
+
+const instructionEn: Instruction[] = [
+{
+  "title": "Unzip",
+  "body": "A compressed folder will be downloaded where you will find the Aronnax executable along with some folders with necessary data.",
+  "icon": "fa-regular fa-file-zipper"
+},
+{
+  "title": "(Optional) Move the folder to your desktop",
+  "body": "You will always want to have your work tool in an accessible place while we develop an installer.",
+  "icon": "fa-solid fa-folder-open"
+},
+{
+  "title": "Create your user profile",
+  "body": "To use the program, you will need to create a local user to which all records will be associated. Make sure to choose your country so you can select cities within the territory. You will not be able to change the registered information!",
+  "icon": "fa-solid fa-user-plus"
+},
+{
+  "title": "Back up your recovery keys",
+  "body": "After your registration, you will receive a one-time use pin if you forget your password. Save it in a safe place.",
+  "icon": "fa-solid fa-key"
+},
+{
+  "title": "Take care of your database",
+  "body": "Aronnax is a 100% offline program, so it has an incorporated database with no backup. You will find your database in the Documents folder of your system.",
+  "icon": "fa-solid fa-database"
+  },
+];
+
+let selectedLocale: Instruction[] = instructionEs;
+if(locale === "en"){
+  selectedLocale = instructionEn;
+} else {
+  selectedLocale = instructionEs;
+}
+
+---
+
+<div class="grid-container">
+  {selectedLocale.map((e)=> <InstructionItem title={e.title} body={e.body} icon={e.icon} index={selectedLocale.indexOf(e) + 1}></InstructionItem>)}
+</div>
+
+<style>
+.grid-container{
+  display: grid;
+  grid-template-columns: 60% 60%;
+  grid-column-gap: 30px;
+  width: 70%;
+}
+
+@media only screen and (max-width: 768px) {
+  .grid-container{
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: auto auto;
+    width: 100%;
+  }
+}
+</style>

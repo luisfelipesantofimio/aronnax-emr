@@ -1,0 +1,108 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import ImageRow from "../../components/ImageRow.astro"
+import Features from "../../components/Features.astro"
+import FeatureItem from "../../components/FeatureItem.astro"
+import TextBody from "../../components/TextBody.astro"
+import Spacer from "../../components/Spacer.astro"
+import DisclaimerSection from "../../components/DisclaimerSection.astro"
+import TodoElement from "../../components/TodoElement.astro"
+---
+
+<Layout title="Aronnax" page="home", locale="en">
+  <main id="home">
+<ImageRow title="The clinical record management you've been looking for"
+      body="Minimalist and efficient clinical record management."
+      imgSource="/img/cap.png" imgAlt="Aronnax preview" ></ImageRow>
+            <Features>
+
+            <FeatureItem 
+                  title="100% offline" 
+                  body="Aronnax does not require an Internet connection to function and uses a local database to store your information. Proceed with caution!"
+                  icon="fa-solid fa-cloud-arrow-down"> 
+            </FeatureItem>
+            <FeatureItem 
+                  title="Clinical records and cases" 
+                  body="Register users, companions, and clinical records. Associate multiple diagnostic impressions and keep your interventions organized."
+                  icon="fa-regular fa-person"
+            >
+            </FeatureItem>
+            <FeatureItem 
+                  title="Create treatment plans" 
+                  body="Design custom forms to maintain a quantitative and personalized follow-up of your cases in each session."
+                  icon="fa-solid fa-clipboard-user"
+            >
+            </FeatureItem>
+            <FeatureItem 
+                  title="Export your records" 
+                  body="Export and share your treatment plans or encrypted information of your clients to keep it secure."
+                  icon="fa-solid fa-file-export"
+            >
+            </FeatureItem>
+            <FeatureItem 
+                  title="ICD-11 incorporated" 
+                  body="With a small download, Aronnax incorporates the ICD-11 database to improve the accuracy of your diagnostic impressions."
+                  icon="fa-solid fa-hand-holding-medical"
+            >
+            </FeatureItem>
+            <FeatureItem 
+                  title="Organize yourself" 
+                  body="Schedule appointments easily, create a to-do list, or add relevant notes during sessions. Focus on what matters."
+                  icon="fa-solid fa-calendar-check"
+            >
+            </FeatureItem>
+            </Features>
+            <TextBody 
+                  title="Motivation"
+                  body="Aronnax is an initiative to address the lack of free alternatives to clinical record management software created for psychologists."
+                  icon="fa-solid fa-magnifying-glass"
+            ></TextBody>
+            <TextBody
+                  title="100% yours"
+                  body="It is and will always be a 100% free project, without microtransactions or subscriptions. Enjoy a truly free tool."
+                  icon="fa-solid fa-face-laugh-beam"
+            ></TextBody>
+            <TextBody 
+                  title="Open source"
+                  body="Aronnax is an open-source project. You can view the source code on GitHub and contribute with new ideas and even code."
+                  icon="fa-brands fa-osi"
+            ></TextBody>
+            <DisclaimerSection title="Important" completedTitle="Completed" pendingTitle="Pending">
+                  <div slot="body">
+                  <p>Aronnax is a product that is already safe to use in a real environment,
+                      but it still lacks certain functionalities and adjustments that could
+                      create a limited user experience. This means that Aronnax is not in an experimental phase,
+                      but it is far from a <strong>1.0.0</strong> version that
+                      translates to a "complete" product.
+                  </p>
+                  <p>
+                      Below, you can see a list of what is expected to be achieved to reach
+                      version <strong>1.0.0</strong> of Aronnax.
+                  </p>
+                  </div>
+                  <div slot="completed">
+                    <TodoElement done={true} text="User and clinical record registration"></TodoElement>
+                    <TodoElement done={true} text="Built-in calendar with event scheduling"></TodoElement>
+                    <TodoElement done={true} text="Session recording with support for notes and treatment plans"></TodoElement>
+                    <TodoElement done={true} text="Creation, export, and tracking of treatment plans"></TodoElement>
+                    <TodoElement done={true} text="Support for multiple cases and diagnoses per patient"></TodoElement>
+                    <TodoElement done={true} text="Encrypted export of user data"></TodoElement>
+                    <TodoElement done={true} text="Visualization of results in treatment plans"></TodoElement>
+                  </div> 
+                  <div>
+                    <TodoElement done={false} text="Export of clinical records in PDF"></TodoElement>
+                    <TodoElement done={false} text="Dark theme support"></TodoElement>
+                    <TodoElement done={false} text="Built-in standardized tests"></TodoElement>
+                    <TodoElement done={false} text="Creation and export of tests"></TodoElement>
+                    <TodoElement done={false} text="Implementation of a better-designed interface"></TodoElement>
+                    <TodoElement done={false} text="Official support for MacOS"></TodoElement>
+                    <TodoElement done={false} text="Installer for Windows and MacOS"></TodoElement>
+                    <TodoElement done={false} text="Flatpak support for Linux"></TodoElement>
+                    <TodoElement done={false} text="Implement cross-sectional graphs to represent case evolution"></TodoElement>
+                  </div>
+            </DisclaimerSection>
+    <Spacer></Spacer>
+    <!-- TODO: Create FAQ component -->
+  </main>
+</Layout>
+

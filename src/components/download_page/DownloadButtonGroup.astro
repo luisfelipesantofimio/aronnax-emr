@@ -1,0 +1,24 @@
+---
+import DownloadButton from "./DownloadButton.astro";
+import { OsType } from "../../types/os_enum.ts"
+
+interface Props {
+  winUrl: string;
+  linUrl: string;
+  local: string;
+}
+
+const {winUrl, linUrl, local} = Astro.props;
+---
+
+<div class="os-selection">
+  <DownloadButton local={local} url={winUrl} os={OsType.windows}></DownloadButton>
+  <DownloadButton local={local} url={linUrl} os={OsType.linux}></DownloadButton>
+</div>
+
+<style>
+.os-selection{
+  display: flex;
+  flex-direction: column;
+}
+</style>

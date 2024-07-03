@@ -1,0 +1,57 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  icon?: string;
+  backgroundColor?: string;
+}
+
+const {title, body, icon = "fa-regular fa-images", backgroundColor = "#28353D" } = Astro.props;
+---
+
+<div class="feature-item">
+  <h1>{title}</h1>
+  <i class={icon}></i>
+  <hr class="rounded">
+  <p>{body}</p>
+</div>
+
+<style define:vars={{ backgroundColor }}>
+*{
+  color: #DFEBF7;
+}
+.rounded{
+  border-radius: 10px;
+  width: 80%;
+  color: #45576D;
+  overflow: hidden;
+}
+.feature-item{
+  width: 23rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--backgroundColor);
+  border-radius: 10px;
+  align-items: center;
+  padding: 30px;
+}
+h1{
+  font-size: 24px;
+  text-align: center;
+}
+
+p{
+  font-size: 18px;
+}
+
+i{
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .feature-item{
+    width: 80%;
+  }
+}
+</style>

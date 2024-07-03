@@ -1,0 +1,64 @@
+---
+import { OsType } from "../../types/os_enum.ts"
+
+interface Props {
+  url: string;
+  os: OsType;
+  local: string;
+}
+
+const {url, os, local} = Astro.props;
+
+let localizedTitle: string = "";
+switch (local){
+  case "es": localizedTitle = "Descargar"; break;
+  case "en": localizedTitle = "Download"; break;
+  default: localizedTitle = "Descargar"; break;
+}
+
+const osLogo: string = `fa-brands fa-${getOsTypeStr(os)}`;
+
+  function getOsTypeStr(e: OsType): string{
+  switch (e){
+    case OsType.windows: return "windows";
+    case OsType.macArm: return "apple";
+    case OsType.linux: return "linux";
+    default: return "windows";
+}
+  }
+
+--- 
+
+<a href={url}>
+<div class="download-button">
+  <i class={osLogo}></i>
+  <h1>
+      {localizedTitle}
+  </h1>
+</div>
+</a>
+  
+<style>
+a{
+  text-decoration: none;
+}
+i{
+  padding-right: 10px;
+  font-size: 30px;
+}
+.download-button{
+  color: black;
+  background-color: yellow;
+  border-radius: 10px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px 0px 10px ;
+  transition: 0.3s;
+}
+.download-button:hover{
+  background-color: orange;
+  
+}
+</style>

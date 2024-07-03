@@ -1,0 +1,31 @@
+---
+interface Props {
+  done: boolean;
+  text: string;
+}
+
+const {done, text} = Astro.props;
+
+const icon: string = done ? "fa-regular fa-circle-check": "fa-regular fa-clock";
+const iconColor: string = done ? "green":"red";
+---
+
+<section>
+  <i class={icon}></i>
+  <p>{text}</p>
+</section>
+
+<style define:vars={{iconColor}}>
+section{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+}
+i{
+  color: var(--iconColor);
+  padding-right: 10px;
+}
+</style>
+

@@ -1,0 +1,108 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import ImageRow from "../../components/ImageRow.astro"
+import TextBody from "../../components/TextBody.astro"
+import Spacer from "../../components/Spacer.astro"
+import DisclaimerSection from "../../components/DisclaimerSection.astro"
+import FeatureItem from "../../components/FeatureItem.astro"
+import Features from "../../components/Features.astro"
+import TodoElement from "../../components/TodoElement.astro"
+---
+
+<Layout title="Aronnax" page="home", locale="es">
+  <main id="home">
+    
+    <ImageRow title="La gestión de historias clínicas que buscabas"
+      body="Gestión de historias clínicas minimalísta y eficiente."
+      imgSource="/img/cap.png" imgAlt="Aronnax preview" ></ImageRow>
+    <Features>
+<FeatureItem 
+      title="100% offline" 
+      body="Aronnax no requiere conexión a Internet para funcionar y usa una base de datos local para almacenar tu información. ¡Procede con cautela!"
+      icon="fa-solid fa-cloud-arrow-down"> 
+    </FeatureItem>
+  <FeatureItem 
+      title="Historias clínicas y casos" 
+      body="Registra usuarios, acompañantes e historias clínicas. Asocia mútiples impresiones diagnósticas y mantén el orden de tus intervenciones."
+      icon="fa regular fa-person"
+    >
+    </FeatureItem>
+    <FeatureItem 
+      title="Crea planes de tratamiento" 
+      body="Diseña formularios personalizados para mantener un seguimiento cuantitativo y personalizado de tus casos en cada sesión."
+      icon="fa-solid fa-clipboard-user"
+    >
+    </FeatureItem>
+    <FeatureItem 
+      title="Exporta tus registros" 
+      body="Exporta y comparte tus planes de tratamiento o la información encriptada de tu consultante para conservarla de forma segura."
+      icon="fa-solid fa-file-export"
+    >
+    </FeatureItem>
+  <FeatureItem 
+      title="CIE-11 incorporado" 
+      body="Con una pequeña descarga, Aronnax incorpora la base de datos de CIE-11 para mejorar la precisión de tus impresiones diagnósticas."
+      icon="fa-solid fa-hand-holding-medical"
+    >
+    </FeatureItem>
+    <FeatureItem 
+      title="Organizate" 
+      body="Agenda consultas de forma sencilla, crea una lista de pendientes o agrega notas relevantes durante las sesiones. Céntrate en lo importante."
+      icon="fa-solid fa-calendar-check"
+    >
+    </FeatureItem>
+    </Features>
+    <TextBody 
+      title="Motivación"
+      body="Aronnax es una iniciativa para resolver la carencia de alternativas libres a software de gestión de historias clínicas creadas para psicólogos."
+      icon="fa-solid fa-magnifying-glass"
+    ></TextBody>
+    <TextBody
+      title="100% tuyo",
+      body="Es y será un proyecto 100% gratuito, sin micropagos o suscripciones. Disfruta de una herramienta realmente libre."
+      icon="fa-solid fa-face-laugh-beam"
+    ></TextBody>
+      <TextBody 
+      title="Código libre"
+      body="Aronnax es un proyecto de código abierto. Puedes ver el código fuente en GitHub y contribuir con nuevas ideas e incluso código."
+      icon="fa-brands fa-osi"
+    ></TextBody>
+    <DisclaimerSection title="Importante" completedTitle="Completado" pendingTitle="Pendiente">
+      <div slot="body">
+  <p>Aronnax es un producto que ya es seguro de usar en un entorno real,
+    pero que aún carece de ciertas funcionalidades y ajustes que podrían
+  crear una experiencia de usuario limitada. Lo anterior quiere decir que Aronnax no se encuentra en fase experimental,
+    pero que se encuentra muy lejos de una versión <strong>1.0.0</strong> que
+    se traduce en un producto "completo".
+  </p>
+  <p>
+    A continuación, podrás ver un listado de lo que se espera tener para alcanzar
+    la versión <strong>1.0.0</strong> de Aronnax.
+  </p>
+      </div>
+      <div slot="completed">
+        <TodoElement done={true} text="Registro de usuarios e historias clínicas"></TodoElement>
+        <TodoElement done={true} text="Calendario incorporado con agendamiento de eventos"></TodoElement>
+        <TodoElement done={true} text="Registro de sesiones con soporte de notas y planes de tratamiento"></TodoElement>
+        <TodoElement done={true} text="Creación, exportación y seguimiento de planes de tratamiento"></TodoElement>
+        <TodoElement done={true} text="Soporte de múltiples casos y diagnósticos por paciente"></TodoElement>
+        <TodoElement done={true} text="Exportación encriptada de datos de usuario"></TodoElement>
+        <TodoElement done={true} text="Visualización de resultados en planes de tratamiento"></TodoElement>
+      </div>
+      <div slot="pending">
+        <TodoElement done={false} text="Exportación de historias clínicas en PDF"></TodoElement>  
+        <TodoElement done={false} text="Soporte de tema oscuro"></TodoElement>  
+        <TodoElement done={false} text="Test estandarizados incorporados"></TodoElement>  
+        <TodoElement done={false} text="Creación y exportación de tests"></TodoElement>  
+        <TodoElement done={false} text="Implementación de una interfaz mejor pensada"></TodoElement>  
+        <TodoElement done={false} text="Soporte oficial para MacOS"></TodoElement>  
+        <TodoElement done={false} text="Instalador para Windows y MacOS"></TodoElement>  
+        <TodoElement done={false} text="Soporte de Flatpak para Linux"></TodoElement>  
+        <TodoElement done={false} text="Implementar gráficos transversales para representar evolución en los casos"></TodoElement>  
+      </div>
+    </DisclaimerSection>
+    <Spacer></Spacer>
+    <!-- TODO: Create FAQ component -->
+  </main>
+</Layout>
+

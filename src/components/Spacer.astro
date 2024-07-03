@@ -1,0 +1,16 @@
+---
+interface Props {
+  padding?: string;
+  color?: string;
+}
+const {padding = "2rem", color = "white"} = Astro.props;
+---
+<div></div>
+
+
+<style define:vars={{color, padding}}>
+.div{
+  background-color: var(--color);
+  padding: var(--padding);
+}
+</style>

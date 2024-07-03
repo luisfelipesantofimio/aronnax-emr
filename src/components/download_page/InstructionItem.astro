@@ -1,0 +1,75 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  body: string;
+  index: number;
+}
+
+const {icon, title, body, index} = Astro.props;
+---
+
+<div class="container">
+  <h1>{index}</h1>
+  <div class="text-content">
+    <div class="title-container"> 
+      <h3>{title}</h3>
+      <i class={icon} style="padding-left: 10px;"></i>
+    </div>
+    <p>{body}</p>
+  </div>
+</div>
+
+<style>
+h1{
+  padding-right: 20px;
+}
+.title-container{
+  display: flex;
+  align-items: center;
+
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 15px;
+  transition: 0.3s;
+}
+.text-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  width: 80%;
+}
+.title-container{
+  margin: 0%;
+}
+h3{
+  margin: 0%;
+}
+p{
+  margin-top: 10px;
+}
+
+.container:hover{
+  background-color: black;
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1{
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>

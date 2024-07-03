@@ -1,0 +1,28 @@
+<section id="features"> 
+  <div class="feature-grid">
+    <slot/>
+  </div>
+</section>
+
+<style>
+section{
+  padding: 2rem;
+  background-color: #AAC7D7;
+}
+.feature-grid{
+  display: grid;
+  gap: 20px 10px;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+  .feature-grid{
+    grid-template-columns: auto;
+  }
+  
+}
+
+</style>
+

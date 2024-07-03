@@ -1,0 +1,53 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/download_page/Header.astro";
+import AssetInformation from "../../components/download_page/AssetInformation.astro";
+import MacInfo from "../../components/download_page/MacInfo.astro";
+---
+
+<Layout title="Download Aronnax" page="download", locale="en">
+  <Header title="How can I use the program?" 
+    body="To use Aronnax, you will get an executable, not an installer, which means you should place the folder you downloaded in an accessible location such as the desktop."
+    getSourceTitle="Get the source code on"
+    locale="en"
+  >
+  </Header>
+  <div class="grid-container">
+    <AssetInformation title="How can I use the program?"
+      body="To use Aronnax, you will get an executable, not an installer, which means you should place the folder you downloaded in an accessible location such as the desktop."
+      locale="en"
+    ></AssetInformation>
+    <MacInfo title="About MacOS support">
+      <div slot="body">
+      <p>
+        MacOS is a platform where it is more difficult to support ($) so that
+        you won't have an official release soon, but you can compile Aronnax for 
+        MacOS if you have the knowledge.
+      </p>
+      <p>
+        In the future you may find experimental versions in this section.
+      </p>
+      </div>
+    </MacInfo>
+  </div>
+  <!-- TODO: Add changelog. (From changelog.md?) -->
+</Layout>
+
+<style>
+.grid-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  margin: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .grid-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0%
+  }
+}
+</style>

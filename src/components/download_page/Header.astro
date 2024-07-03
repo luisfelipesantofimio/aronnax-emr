@@ -1,0 +1,149 @@
+---
+import DownloadButtonGroup from "./DownloadButtonGroup.astro";
+import getGithubReleases from "../../methods/github_fetch.ts";
+import type {GithubResult} from "../../types/github_result.ts"
+
+interface Props {
+  title: string;
+  body: string;
+  getSourceTitle: string;
+  locale: string;
+}
+
+
+const decodedResponse: GithubResult | null = await getGithubReleases();
+
+const releaseVersion: string | undefined = decodedResponse?.data.tag_name;
+
+const creationDate: Date = new Date(decodedResponse?.data.created_at??"");
+
+const formattedDate: string = `${creationDate.getDate()}/${creationDate.getMonth()+1}/${creationDate.getFullYear()}`
+
+const {title, body, getSourceTitle, locale: local} = Astro.props;
+
+let freeAndOpenSource: string = "";
+let openSource: string = "";
+let underLicence: string = "";
+let versionTitle: string = "";
+let wikiUrl: string = "";
+
+switch (local){
+  case "es": {
+    freeAndOpenSource = "Aronnax es software 100% gratuito y de ";
+    openSource = "Código abierto";
+    underLicence = "bajo la licencia";
+    versionTitle = "Versión";
+    wikiUrl = "https://es.wikipedia.org/wiki/C%C3%B3digo_abierto";
+    break;
+  };
+  case "en": {
+    freeAndOpenSource = "Aronnax is a 100% free and ";
+    openSource = "open source";
+    underLicence = "software under the license";
+    versionTitle = "Version";
+    wikiUrl = "https://en.wikipedia.org/wiki/Open_source";
+    break;
+  };
+  default: {
+    freeAndOpenSource = "Aronnax es software 100% gratuito y de ";
+    openSource = "Código abierto";
+    underLicence = "bajo la licencia";
+    versionTitle = "Versión";
+    wikiUrl = "https://es.wikipedia.org/wiki/C%C3%B3digo_abierto";
+    break;
+  };
+}
+---
+
+<section>
+  <div class="download-container">
+    <div class="info-container">
+    <h1>
+        {title}
+    </h1>
+    <p>
+        {body}
+    </p>
+
+      <div><p>{getSourceTitle} <a href="https://github.com/luisfelipesantofimio/aronnax">GitHub <i class="fa-brands fa-github"></i></a></p></div>
+    </div>
+    <div class="download-buttons">
+  <DownloadButtonGroup local={local} linUrl={decodedResponse?.assets.lin ?? ""} winUrl={decodedResponse?.assets.win ?? ""}>
+  </DownloadButtonGroup>
+      <div class="version-area">
+        <p>{}</p>
+        <p>{freeAndOpenSource} <a href={wikiUrl} target="_blank">{openSource}</a> {underLicence} <a href="https://www.gnu.org/licenses/gpl-3.0.en.html#license-text" target="_blank">GPLv3</a>.</p>
+      <div class="version">
+        <a href="https://github.com/luisfelipesantofimio/aronnax" target="_blank">
+          <i class="fa-brands fa-github" style="padding-right: 10px;"></i>
+        </a>
+        <p>{versionTitle}: <strong>{releaseVersion}</strong> - {formattedDate}</p> 
+      </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+a{
+  color: white;
+  font-weight: bold;
+}
+section{
+  color: white;
+  background-color: #45576D;
+  width: 96.05%;
+  padding: 30px;
+}
+.download-container{
+  display: flex;
+ flex-direction: row; 
+  align-items: center;
+  justify-content: space-evenly;
+}
+.info-container{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.download-buttons{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  justify-content: center;
+}
+
+.version{
+  display: flex;
+  align-self: self-end;
+  align-items: center;
+  font-size: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  section{
+    width: 100%;
+    padding: 0px;
+  }
+  .info-container{
+    width: 85%;
+  }
+  .download-container{
+    flex-direction: column;
+  }
+  .download-buttons{
+    align-items: center;
+    width: 90%;
+  }
+  .version-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+    padding-bottom: 20px;
+  }
+}
+</style>
+

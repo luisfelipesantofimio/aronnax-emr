@@ -1,0 +1,169 @@
+---
+interface Props {
+    local?: string;
+    page?: string;
+}
+
+interface RouteName{
+    name: string;
+    url: string;
+}
+
+const esHomeRoutes: RouteName[] = [
+    {
+        name: "Inicio",
+        url: "/aronnax-erm/#home",
+    },
+    {
+        name: "Características",
+        url: "/aronnax-erm/#features",
+    },
+    {
+    name: "Roadmap",
+        url: "/aronnax-erm/#roadmap",
+    },
+    {
+        name: "Descargar",
+        url: "/aronnax-erm/download",
+    },
+];
+
+const enHomeRoutes: RouteName[] = [
+    {
+        name: "Home",
+        url: "/aronnax-erm/#home",
+    },
+    {
+        name: "About",
+        url: "/aronnax-erm/#features",
+    },
+    {
+        name: "Download",
+        url: "/aronnax-erm/download",
+    },
+];
+
+const esDownloadRoutes: RouteName[] = [
+    {
+        name: "Inicio",
+        url: "/aronnax-erm/#home",
+    },
+];
+
+const enDownloadRoutes: RouteName[] = [
+    {
+        name: "Home",
+        url: "/aronnax-erm/#home",
+    },
+];
+
+
+
+let selected: RouteName[] = esHomeRoutes;
+
+const {local = "es", page = "home"} = Astro.props;
+
+if(page === "home" && local === "en"){
+    selected = enHomeRoutes;
+}
+
+if(page === "home" && local === "es"){
+    selected = esHomeRoutes;
+}
+
+if(page === "download" && local === "es"){
+    selected = esDownloadRoutes;
+}
+if (page === "download" && local === "en"){
+    selected = enDownloadRoutes;
+}
+
+---
+
+<aside>
+<nav>
+<div class="logo"><h1>Aronnax</h1></div>
+<ul class="menu">
+            {selected.map((e) => <li><a href={e.url}>{e.name}</a></li>)}
+    </ul>
+</nav>
+
+
+</aside>
+
+<style>
+html{
+    scroll-behavior: smooth;
+}
+aside{
+    position: fixed; 
+    bottom: 0%;
+    right: 0%;
+    background-color: #45576D;
+    padding-left: 6rem;
+    padding-right: 5rem;
+    border-radius: 10px 0px 0px 0px;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 100%;
+    font-size: 24px;
+    color: white;
+    /* min-height: 10vh; */
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+    gap: 1rem;
+
+    opacity: 100%;
+}
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+a {
+    opacity: 100%;
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    aside{
+        display: flex;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        width:100%;
+        padding:0;
+        white-space: nowrap;
+        border-radius: 0px 0px 0px 0px;
+    }
+    nav{
+        padding-left: 1rem;
+    }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+

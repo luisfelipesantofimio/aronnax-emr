@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section>
+  <div class="title">
+  <h1>
+    {title}
+  </h1>
+    <i class="fa-brands fa-apple" style="padding-left: 10px;"></i>
+  </div>
+  <slot name="body"/>
+</section>
+
+<style>
+.title{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  section{
+    width: 70%;
+  }
+}
+</style>
