@@ -4,7 +4,7 @@ import node from "@astrojs/node";
 // https://astro.build/config
 export default defineConfig({
   site: "https://luisfelipesantofimio.github.io",
-  base: "aronnax-erm/dist/",
+  base: "aronnax-erm",
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],
