@@ -4,8 +4,8 @@ import netlify from "@astrojs/netlify";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  adapter: netlify({})
-  , i18n: {
+  adapter: netlify({}),
+  i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],
     routing: {
